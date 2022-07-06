@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -34,14 +35,26 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course addCourse(Course course) {
-
-        return null;
+        list.add(course);
+        return course;
     }
 
     @Override
     public Course updateCourse(Course course) {
-
-        return null;
+        list.forEach(c -> {
+            if(c.getId() == course.getId()){
+                if(course.getTitle() != null && course.getDescription() != null && course.getTopics() != null){
+                    System.out.println("YES YES YES");
+                    c.setTitle(course.getTitle());
+                    c.setDescription(course.getDescription());
+                    c.setTopics(course.getTopics());
+                }
+            }
+        });
+        return course;
+    }
+    public void deleteCourse(long courseId){
+        list=this.list.stream().filter(e->e.getId()!=courseId).collect(Collectors.toList());
     }
 
 }

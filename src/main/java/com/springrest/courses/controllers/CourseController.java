@@ -56,4 +56,14 @@ public class CourseController {
             return new ResponseEntity<>("Exception in PUT:/course { " + e + " }", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @DeleteMapping("/course/{courseId}")
+    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable long courseId){
+        try {
+            this.courseService.deleteCourse(courseId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
