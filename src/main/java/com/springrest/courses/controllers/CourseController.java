@@ -2,7 +2,6 @@ package com.springrest.courses.controllers;
 
 import com.springrest.courses.entity.Course;
 import com.springrest.courses.service.CourseService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
